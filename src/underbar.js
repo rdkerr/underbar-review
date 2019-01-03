@@ -96,6 +96,15 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+    var result = [];
+    var visited = {};
+    for (var i = 0 ; i < array.length ; i++) {
+      if(!visited[array[i]]) {
+        visited[array[i]] = 1;
+        result.push(array[i])
+      }
+    }
+    return result;
   };
 
 
