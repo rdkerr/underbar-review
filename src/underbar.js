@@ -354,9 +354,6 @@
   // Calls the method named by functionOrKey on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
-    console.log(collection);
-    console.log(functionOrKey);
-    console.log(args);
     return _.map(collection, (item) => {
       if (typeof functionOrKey === 'function') {
         return functionOrKey.apply(item, args);
@@ -382,19 +379,34 @@
     });
   };
 
+  // Takes a multidimensional array and converts it to a one-dimensional array.
+  // The new array should contain all elements of the multidimensional array.
+  //
+  // Hint: Use Array.isArray to check if something is an array
+  _.flatten = function(nestedArray, result) {
+    result = [];
+
+    var helper = function(array, result) {
+      _.each(array, (element) => {
+        if (Array.isArray(element)) {
+          helper(element, result);
+        } else {
+          result.push(element);
+        }
+      });
+      return result;
+    };
+
+    return helper(nestedArray, result);
+  };
+
   // Zip together two or more arrays with elements of the same index
   // going together.
   //
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
-  };
 
-  // Takes a multidimensional array and converts it to a one-dimensional array.
-  // The new array should contain all elements of the multidimensional array.
-  //
-  // Hint: Use Array.isArray to check if something is an array
-  _.flatten = function(nestedArray, result) {
   };
 
   // Takes an arbitrary number of arrays and produces an array that contains
